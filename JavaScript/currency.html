@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currency Exchanger</title>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("https://api.exchangerate.host/latest?base=USD")
+          .then((response) => response.json())
+          .then((data) => {
+            // console.log(data);
+            console.log(data.rates);
+            const rate = data.rates.LKR.toFixed(2);
+            document.querySelector("#rate").innerHTML = rate;
+          });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Currency Exchanger</h1>
+    <p>1 USD = <span id="rate"></span> LKR</p>
+  </body>
+</html>
